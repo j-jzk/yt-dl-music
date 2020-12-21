@@ -6,7 +6,7 @@ import sys
 
 def help():
     print("%s <file>" % sys.argv[0])
-    print("<file> is a csv file with these collumns:")
+    print("<file> is a csv file with these columns:")
     print("    url, artist, title, album")
     print("album can be null")
     print("collumns are separated by a pipe (|)")

@@ -20,7 +20,7 @@ The columns are separated with a "|" and the first line of the file must be like
 url|artist|title|album
 ```
 
-The _album_ columnt can be empty (but you have to keep the | at the end). See `example.csv` for an example.
+The _album_ column can be empty (but you have to keep the | at the end). See `example.csv` for an example.
 
 You then run the script like this:
 ```bash
