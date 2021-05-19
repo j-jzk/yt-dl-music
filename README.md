@@ -2,11 +2,11 @@
 An useful youtube-dl wrapper to download music
 
 ## Usage
-Install the `youtube-dl` and `eyeD3` packages:
+Install the `youtube-dl` and `music_tag` packages:
 
 ```bash
 pip3 install youtube-dl
-pip3 install eyeD3
+pip3 install music_tag
 ```
 
 Specify the songs to download. This is done using a csv file with these columns:
@@ -27,4 +27,4 @@ You then run the script like this:
 python3 download.py <filename>
 ```
 
-The downloaded files are automatically converted to MP3 and tagged properly.
+The downloaded files are automatically converted to OGG/Vorbis and tagged properly.

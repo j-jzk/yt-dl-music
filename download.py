@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 import csv
-import eyed3
+import music_tag
 import youtube_dl
 import sys
 
@@ -63,8 +63,8 @@ with youtube_dl.YoutubeDL(ydl_opts) as ydl:
 for video in videos:
    print("Tagging \"%s\"" % video['title'])
    
-   f = eyed3.load(format_filename(video['filename']))
-   f.tag.title = video['title']
-   f.tag.artist = video['artist']
-   if video['album']: f.tag.album = video['album']
-   f.tag.save()
+   f = music_tag.load_file(format_filename(video['filename']))
+   f['title'] = video['title']
+   f['artist'] = video['artist']
+   if video['album']: f['album'] = video['album']
+   f.save()
