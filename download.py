@@ -19,7 +19,7 @@ def crash(msg):
 
 def format_filename(fname):
     ext_index = fname.rfind('.')
-    return fname[:ext_index] + ".mp3"
+    return fname[:ext_index] + ".ogg"
 
 # parse arguments
 if len(sys.argv) == 1 or sys.argv[1] in ['-h', '--help']:
@@ -44,10 +44,11 @@ except Exception as e:
 
 # download the videos
 ydl_opts = {
-    'format': 'bestaudio',  # idk if this is necessary
+    'format': 'bestaudio/best',  # idk if this is necessary
     'postprocessors': [{
         'key': 'FFmpegExtractAudio',
-        'preferredcodec': 'mp3'
+        'preferredcodec': 'vorbis',
+        'preferredquality': '4'
     }]
 }
 
