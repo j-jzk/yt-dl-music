@@ -21,6 +21,20 @@ def format_filename(fname):
     ext_index = fname.rfind('.')
     return fname[:ext_index] + ".ogg"
 
+def download(video, ydl):
+    '''Dowloads a specified video. Returns the dowloaded filename.'''
+    url = video['url']
+    info = ydl.extract_info(url, download=True)
+    return ydl.prepare_filename(info)
+
+def tag(filename, info):
+    '''Tags a file with the specified information.'''
+    f = music_tag.load_file(format_filename(filename))
+    f['title'] = info['title']
+    f['artist'] = info['artist']
+    if info['album']: f['album'] = info['album']
+    f.save()
+
 # parse arguments
 if len(sys.argv) == 1 or sys.argv[1] in ['-h', '--help']:
     help()
@@ -54,18 +68,10 @@ ydl_opts = {
 
 with YoutubeDL(ydl_opts) as ydl:
     for video in videos:
-        url = video['url']
-        info = ydl.extract_info(url, download=True)
-        video['filename'] = ydl.prepare_filename(info)
+        print(f"Processing {video['title']}")
+        print("  - downloading")
+        filename = download(video, ydl)
 
-
-# add metadata to the downloaded files
-for video in videos:
-   print("Tagging \"%s\"" % video['title'])
-   
-   f = music_tag.load_file(format_filename(video['filename']))
-   f['title'] = video['title']
-   f['artist'] = video['artist']
-   if video['album']: f['album'] = video['album']
-   f.save()
+        print("  - tagging")
+        tag(filename, video)
 
