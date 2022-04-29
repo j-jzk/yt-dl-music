@@ -1,11 +1,11 @@
 # Youtube-dl Music Downloader
-An useful youtube-dl wrapper to download music
+A useful youtube-dl wrapper to download music
 
 ## Usage
-Install the `youtube-dl` and `music_tag` packages:
+Install the `yt-dlp` and `music_tag` packages:
 
 ```bash
-pip3 install youtube-dl
+pip3 install yt-dlp
 pip3 install music_tag
 ```
 
