@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 import csv
 import music_tag
-import youtube_dl
+from yt_dlp import YoutubeDL
 import sys
 
 def help():
@@ -52,7 +52,7 @@ ydl_opts = {
     }]
 }
 
-with youtube_dl.YoutubeDL(ydl_opts) as ydl:
+with YoutubeDL(ydl_opts) as ydl:
     for video in videos:
         url = video['url']
         info = ydl.extract_info(url, download=True)
@@ -68,3 +68,4 @@ for video in videos:
    f['artist'] = video['artist']
    if video['album']: f['album'] = video['album']
    f.save()
+
