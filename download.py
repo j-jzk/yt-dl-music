@@ -46,6 +46,7 @@ try:
     with open(sys.argv[1]) as f:
         reader = csv.DictReader(f, delimiter='|')
         for row in reader:
+            row["artist"] = row["artist"].split("&&")
             videos.append(row)
             
 except FileNotFoundError:
